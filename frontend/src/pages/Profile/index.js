@@ -23,14 +23,14 @@ export default function Profile(){
    async function handleDeleteIncident(id){
        try{
            await api.delete(`incidents/${id}`,{
-               header:{
-                   Authorization:ongid,
+               headers:{
+                   Authorization: ongid,
                 }
            })
 
-           setIncidents(incidents(incidents.filter(incident=>incident.id!== id)))
+           setIncidents(incidents.filter(incident=>incident.id !== id));
        }catch(erro){
-           alert("Erro ao deletar caso tente novamente")
+           alert("Erro ao deletar caso tente novamente"+ erro)
        }
    }
    function handleLogout(){
@@ -53,7 +53,7 @@ export default function Profile(){
               {incidents.map(incident=>(
                    <li key={incident.id}>
                    <strong>CASO:</strong>
-                    <p>{incident.titele}</p> 
+                    <p>{incident.title}</p> 
  
                    <strong>DESCRIÇÃO:</strong>
                     <p>{incident.description}</p>
